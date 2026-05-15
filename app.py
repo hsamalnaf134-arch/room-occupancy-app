@@ -44,12 +44,11 @@ with open("scaler.pkl", "rb") as f:
 
 st.header("Enter Room Sensor Values")
 
-temperature = st.number_input("Temperature", value=23.0 )
-humidity = st.number_input("Humidity", value=27.0 )
-light = st.number_input("Light", value=300.0 )
-co2 = st.number_input("CO2", value=700.0 )
-humidity_ratio = st.number_input("Humidity Ratio", value=0.004 )
-
+temperature = st.number_input("Temperature", value=23.0, step=0.5)
+humidity = st.number_input("Humidity", value=27.0, step=1.0)
+light = st.number_input("Light", value=300.0, step=50.0)
+co2 = st.number_input("CO2", value=700.0, step=50.0)
+humidity_ratio = st.number_input("Humidity Ratio", value=0.004, step=0.001, format="%.4f")
 if st.button("Predict"):
 
     data = pd.DataFrame(

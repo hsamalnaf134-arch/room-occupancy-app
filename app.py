@@ -3,6 +3,32 @@ import pandas as pd
 import pickle
 
 st.set_page_config(page_title="Room Occupancy", page_icon="🏠")
+page_bg = """
+<style>
+.stApp {
+    background-image: url("https://images.unsplash.com/photo-1497366754035-f200968a6e72");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+[data-testid="stHeader"] {
+    background: rgba(0,0,0,0);
+}
+
+[data-testid="stToolbar"] {
+    right: 2rem;
+}
+
+.block-container {
+    background-color: rgba(255,255,255,0.85);
+    padding: 2rem;
+    border-radius: 15px;
+}
+</style>
+"""
+
+st.markdown(page_bg, unsafe_allow_html=True)
 
 st.title("🏠 Room Occupancy Detection")
 

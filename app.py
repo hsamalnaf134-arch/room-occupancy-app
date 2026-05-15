@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import pickle
 
-st.set_page_config(page_title="Room Occupancy", page_icon="🏠")
+st.set_page_config(page_title="Room Occupancy")
 page_bg = """
 <style>
 .stApp {
@@ -30,25 +30,25 @@ page_bg = """
 
 st.markdown(page_bg, unsafe_allow_html=True)
 
-st.title("🏠 Room Occupancy Detection")
+st.title("Room Occupancy Detection")
 
 st.write("Predict whether the room is occupied or not.")
 
-# Load model
+
 with open("model.pkl", "rb") as f:
     model = pickle.load(f)
 
-# Load scaler
+
 with open("scaler.pkl", "rb") as f:
     scaler = pickle.load(f)
 
 st.header("Enter Room Sensor Values")
 
-temperature = st.number_input("Temperature", value=23.0)
-humidity = st.number_input("Humidity", value=27.0)
-light = st.number_input("Light", value=300.0)
-co2 = st.number_input("CO2", value=700.0)
-humidity_ratio = st.number_input("Humidity Ratio", value=0.004)
+temperature = st.number_input("Temperature", value=23.0 ,step=1)
+humidity = st.number_input("Humidity", value=27.0 ,step=1)
+light = st.number_input("Light", value=300.0 ,step=5)
+co2 = st.number_input("CO2", value=700.0 ,step=5)
+humidity_ratio = st.number_input("Humidity Ratio", value=0.004 , step=0.001)
 
 if st.button("Predict"):
 
@@ -62,6 +62,6 @@ if st.button("Predict"):
     prediction = model.predict(scaled_data)[0]
 
     if prediction == 1:
-        st.success("✅ Room is Occupied")
+        st.success("Room is Occupied")
     else:
-        st.error("❌ Room is Unoccupied")
+        st.error("Room is Unoccupied")

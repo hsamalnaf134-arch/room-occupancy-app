@@ -42,7 +42,7 @@ with open("model.pkl", "rb") as f:
 with open("scaler.pkl", "rb") as f:
     scaler = pickle.load(f)
 
-st.header("Enter Room Sensor Values")
+st.header("Enter Room Features")
 
 temperature = st.number_input("Temperature", value=23.0, step=0.5)
 humidity = st.number_input("Humidity", value=27.0, step=1.0)
